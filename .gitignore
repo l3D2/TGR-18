@@ -1,0 +1,4 @@
+/node_modules/
+mongodb/
+<!-- local env -->
+*.env
