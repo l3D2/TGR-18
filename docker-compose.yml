@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    command: mongod --port 27018
+    env_file:
+      - .env
+    volumes:
+      - ./mongodb:/data/db
+    ports:
+      - "27018:27018"
+    environment:
+      - "MONGO_INITDB_DATABASE=${MONGO_DEFAULT_DBNAME}"
+      - "MONGO_INITDB_ROOT_USERNAME=${MONGO_DEFAULT_ROOT_USER}"
+      - "MONGO_INITDB_ROOT_PASSWORD=${MONGO_DEFAULT_ROOT_PASS}"
+      - "MONGO_INITDB_USERNAME=${MONGO_DEFAULT_USER}"
+      - "MONGO_INITDB_PASSWORD=${MONGO_DEFAULT_PASS}"
