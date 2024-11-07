@@ -1,9 +1,18 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const os = require("os");
 
 //Import port configuration
 const port = process.env.API_PORT || 1000;
+
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "API Running.", status: "OK" });

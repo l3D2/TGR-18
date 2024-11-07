@@ -5,6 +5,21 @@ const Schema = new mongoose.Schema({
     type: Number,
     default: () => Math.floor(Date.now() / 1000), // Unix timestamp in seconds
   },
+  data: {
+    exp: {
+      type: Number,
+      default: 0,
+    },
+    mch_status: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 2,
+    },
+    pred: {
+      type: String,
+    },
+  },
 });
 
 const Schema2 = new mongoose.Schema({
