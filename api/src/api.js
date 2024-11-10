@@ -2,6 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const os = require("os");
+const bodyParser = require("body-parser");
+const logger = require("morgan");
+
+//Import routes
+const apiRouter = require("./router/apiv1");
 
 //Import port configuration
 const port = process.env.API_PORT || 1000;
@@ -13,6 +18,11 @@ app.use(
     credentials: true,
   })
 );
+app.use(logger("combined"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use("/api/v1", apiRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "API Running.", status: "OK" });
