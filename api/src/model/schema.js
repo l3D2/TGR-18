@@ -20,8 +20,15 @@ const Schema = new mongoose.Schema({
       type: String,
     },
   },
+  files: {
+    original: {
+      type: String,
+    },
+    filtered: {
+      type: String,
+    },
+  },
 });
-
 const Schema2 = new mongoose.Schema({
   ts: {
     type: Number,
@@ -32,7 +39,7 @@ const Schema2 = new mongoose.Schema({
   },
 });
 
-const schema = mongoose.model("Schema", Schema);
-const schema2 = mongoose.model("Schema2", Schema2);
+const schema = mongoose.model("Data", Schema, "data");
+// const schema2 = mongoose.model("Schema2", Schema2);
 
-module.exports = { schema, schema2 };
+module.exports = { schema };

@@ -2,3 +2,6 @@
 mongodb/
 <!-- local env -->
 *.env
+.cache/
+.config/
+snap/
