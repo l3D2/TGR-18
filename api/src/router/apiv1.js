@@ -89,7 +89,7 @@ router.post(
     // await db.connect();
     // try {
     //   const newData = new model.schema({
-    //     ts: ts,
+    //     ts: req.body.timestamp,
     //     data: {
     //       exp: d.exp,
     //       mch_status: d.mch_status,

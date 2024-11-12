@@ -13,3 +13,13 @@ services:
       - "MONGO_INITDB_DATABASE=${MONGO_DEFAULT_DBNAME}"
       - "MONGO_INITDB_ROOT_USERNAME=${MONGO_DEFAULT_ROOT_USER}"
       - "MONGO_INITDB_ROOT_PASSWORD=${MONGO_DEFAULT_ROOT_PASS}"
+      - "MONGO_INITDB_USERNAME=${MONGO_DEFAULT_USER}"
+      - "MONGO_INITDB_PASSWORD=${MONGO_DEFAULT_PASS}"
+  mqtt:
+    build: 
+      context: ./mqtt
+      dockerfile: Dockerfile
+    container_name: mqtt
+    volumes:
+      - .:/mqtt
+    command: ["bun", "run", "start"]
