@@ -1,0 +1,3 @@
+[submodule "app_submodule"]
+	path = app_submodule
+	url = https://github.com/l3D2/Serverpo_Day2.git
