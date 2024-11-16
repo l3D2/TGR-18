@@ -5,41 +5,76 @@ const Schema = new mongoose.Schema({
     type: Number,
     default: () => Math.floor(Date.now() / 1000), // Unix timestamp in seconds
   },
-  data: {
-    exp: {
-      type: Number,
-      default: 0,
-    },
-    mch_status: {
-      type: Number,
-      default: 0,
-      min: 0,
-      max: 2,
-    },
-    pred: {
-      type: String,
-    },
+  predict: {
+    type: String,
   },
-  files: {
-    original: {
-      type: String,
-    },
-    filtered: {
-      type: String,
-    },
+  feature: {
+    type: Array,
   },
-});
-const Schema2 = new mongoose.Schema({
-  ts: {
+  conf: {
     type: Number,
-    default: () => Math.floor(Date.now() / 1000), // Unix timestamp in seconds
   },
-  data: {
+  datasize: {
+    type: Number,
+  },
+  file: {
     type: String,
   },
 });
 
-const schema = mongoose.model("Data", Schema, "data");
-// const schema2 = mongoose.model("Schema2", Schema2);
+const SchemaSound = new mongoose.Schema({
+  ts: {
+    type: Number,
+  },
+  audiopos: {
+    type: Number,
+  },
+  sound: {
+    type: Array,
+  },
+});
 
-module.exports = { schema };
+const mechine = new mongoose.Schema({
+  ts: {
+    type: Number,
+    default: () => Math.floor(Date.now() / 1000), // Unix timestamp in seconds
+  },
+  power: {
+    type: Number,
+    default: 0,
+  },
+  L1_GND: {
+    type: Number,
+    default: 0,
+  },
+  L2_GND: {
+    type: Number,
+    default: 0,
+  },
+  L3_GND: {
+    type: Number,
+    default: 0,
+  },
+  pressure: {
+    type: Number,
+    default: 0,
+  },
+  force: {
+    type: Number,
+    default: 0,
+  },
+  cycle_count: {
+    type: Number,
+    default: 0,
+  },
+  PoP: {
+    type: Number,
+    default: 0,
+  },
+});
+
+const schema = mongoose.model("Data", Schema, "data");
+const machineSchema = mongoose.model("mechine", mechine, "mechine");
+const schemaSound = mongoose.model("SchemaSound", SchemaSound, "sound");
+
+module.exports = { schema, machineSchema, schemaSound };

@@ -6,8 +6,10 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 
 //Import routes
-const apiRouter = require("./router/apiv1");
-
+const apiRouter1 = require("./router/apiv1");
+const apiRouter2 = require("./router/patch");
+const apiRouter3 = require("./router/machine");
+const apiRouter4 = require("./router/apiv2");
 //Import port configuration
 const port = process.env.API_PORT || 1000;
 
@@ -22,7 +24,10 @@ app.use(logger("combined"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/v1", apiRouter);
+app.use("/api/v1", apiRouter1);
+app.use("/api/v1", apiRouter2);
+app.use("/api/v1", apiRouter3);
+app.use("/api/v1", apiRouter4);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "API Running.", status: "OK" });
